@@ -67,6 +67,6 @@ func main() {
         if err != nil {
                 log.Fatal(err)
         }
-        log.Printf("It worked!")
+        log.Printf("Communication secured using mTLS...")
         log.Printf("Greeting: %s", resp.GetMessage())
 }
