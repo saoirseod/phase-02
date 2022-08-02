@@ -30,7 +30,7 @@ func main() {
         certPool := x509.NewCertPool()
         certPool.AppendCertsFromPEM(caCert)
 
-        //read client cert
+        //reads in the client cert
         clientCert, err := tls.LoadX509KeyPair("../certs/client-cert.pem", "../certs/client-key.pem")
         if err != nil {
                 log.Fatal(err)
@@ -43,7 +43,7 @@ func main() {
 
         tls := credentials.NewTLS(configuration)
 
-        // create client connection
+        //establishes the client connection, only works because of the server and client -ext.conf files that specify an IP 
         connection, err := grpc.Dial(
                 "0.0.0.0:9000",
                 grpc.WithTransportCredentials(tls),
